@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.lblHeaderText = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.itemsListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddToCart = new System.Windows.Forms.Button();
             this.lblShopingCartlistBoxlabe = new System.Windows.Forms.Label();
             this.shoppingCartListBox = new System.Windows.Forms.ListBox();
             this.btnMakePurchase = new System.Windows.Forms.Button();
+            this.lblVendorList = new System.Windows.Forms.Label();
+            this.vendorListBox = new System.Windows.Forms.ListBox();
+            this.lblStoreProfit = new System.Windows.Forms.Label();
+            this.lblStoreProfitValue = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblHeaderText
@@ -47,14 +51,14 @@
             this.lblHeaderText.TabIndex = 0;
             this.lblHeaderText.Text = "Consignment Shop Demo";
             // 
-            // listBox1
+            // itemsListBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(53, 107);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(169, 124);
-            this.listBox1.TabIndex = 1;
+            this.itemsListBox.FormattingEnabled = true;
+            this.itemsListBox.ItemHeight = 20;
+            this.itemsListBox.Location = new System.Drawing.Point(53, 107);
+            this.itemsListBox.Name = "itemsListBox";
+            this.itemsListBox.Size = new System.Drawing.Size(223, 124);
+            this.itemsListBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -68,17 +72,18 @@
             // btnAddToCart
             // 
             this.btnAddToCart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddToCart.Location = new System.Drawing.Point(252, 153);
+            this.btnAddToCart.Location = new System.Drawing.Point(297, 159);
             this.btnAddToCart.Name = "btnAddToCart";
             this.btnAddToCart.Size = new System.Drawing.Size(107, 29);
             this.btnAddToCart.TabIndex = 3;
             this.btnAddToCart.Text = "Add To Cart ->";
             this.btnAddToCart.UseVisualStyleBackColor = true;
+            this.btnAddToCart.Click += new System.EventHandler(this.btnAddToCart_Click);
             // 
             // lblShopingCartlistBoxlabe
             // 
             this.lblShopingCartlistBoxlabe.AutoSize = true;
-            this.lblShopingCartlistBoxlabe.Location = new System.Drawing.Point(390, 74);
+            this.lblShopingCartlistBoxlabe.Location = new System.Drawing.Point(452, 74);
             this.lblShopingCartlistBoxlabe.Name = "lblShopingCartlistBoxlabe";
             this.lblShopingCartlistBoxlabe.Size = new System.Drawing.Size(111, 20);
             this.lblShopingCartlistBoxlabe.TabIndex = 5;
@@ -88,32 +93,73 @@
             // 
             this.shoppingCartListBox.FormattingEnabled = true;
             this.shoppingCartListBox.ItemHeight = 20;
-            this.shoppingCartListBox.Location = new System.Drawing.Point(394, 107);
+            this.shoppingCartListBox.Location = new System.Drawing.Point(435, 107);
             this.shoppingCartListBox.Name = "shoppingCartListBox";
-            this.shoppingCartListBox.Size = new System.Drawing.Size(169, 124);
+            this.shoppingCartListBox.Size = new System.Drawing.Size(221, 124);
             this.shoppingCartListBox.TabIndex = 4;
             // 
             // btnMakePurchase
             // 
             this.btnMakePurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMakePurchase.Location = new System.Drawing.Point(456, 251);
+            this.btnMakePurchase.Location = new System.Drawing.Point(549, 255);
             this.btnMakePurchase.Name = "btnMakePurchase";
             this.btnMakePurchase.Size = new System.Drawing.Size(107, 29);
             this.btnMakePurchase.TabIndex = 6;
             this.btnMakePurchase.Text = "Purchase";
             this.btnMakePurchase.UseVisualStyleBackColor = true;
+            this.btnMakePurchase.Click += new System.EventHandler(this.btnMakePurchase_Click);
+            // 
+            // lblVendorList
+            // 
+            this.lblVendorList.AutoSize = true;
+            this.lblVendorList.Location = new System.Drawing.Point(53, 295);
+            this.lblVendorList.Name = "lblVendorList";
+            this.lblVendorList.Size = new System.Drawing.Size(90, 20);
+            this.lblVendorList.TabIndex = 8;
+            this.lblVendorList.Text = "Vendor List";
+            // 
+            // vendorListBox
+            // 
+            this.vendorListBox.FormattingEnabled = true;
+            this.vendorListBox.ItemHeight = 20;
+            this.vendorListBox.Location = new System.Drawing.Point(53, 328);
+            this.vendorListBox.Name = "vendorListBox";
+            this.vendorListBox.Size = new System.Drawing.Size(223, 124);
+            this.vendorListBox.TabIndex = 7;
+            // 
+            // lblStoreProfit
+            // 
+            this.lblStoreProfit.AutoSize = true;
+            this.lblStoreProfit.Location = new System.Drawing.Point(431, 328);
+            this.lblStoreProfit.Name = "lblStoreProfit";
+            this.lblStoreProfit.Size = new System.Drawing.Size(89, 20);
+            this.lblStoreProfit.TabIndex = 9;
+            this.lblStoreProfit.Text = "Store Profit";
+            // 
+            // lblStoreProfitValue
+            // 
+            this.lblStoreProfitValue.AutoSize = true;
+            this.lblStoreProfitValue.Location = new System.Drawing.Point(545, 328);
+            this.lblStoreProfitValue.Name = "lblStoreProfitValue";
+            this.lblStoreProfitValue.Size = new System.Drawing.Size(49, 20);
+            this.lblStoreProfitValue.TabIndex = 10;
+            this.lblStoreProfitValue.Text = "$0.00";
             // 
             // ConsignmentShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 402);
+            this.ClientSize = new System.Drawing.Size(688, 507);
+            this.Controls.Add(this.lblStoreProfitValue);
+            this.Controls.Add(this.lblStoreProfit);
+            this.Controls.Add(this.lblVendorList);
+            this.Controls.Add(this.vendorListBox);
             this.Controls.Add(this.btnMakePurchase);
             this.Controls.Add(this.lblShopingCartlistBoxlabe);
             this.Controls.Add(this.shoppingCartListBox);
             this.Controls.Add(this.btnAddToCart);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.itemsListBox);
             this.Controls.Add(this.lblHeaderText);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -127,12 +173,16 @@
         #endregion
 
         private System.Windows.Forms.Label lblHeaderText;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox itemsListBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddToCart;
         private System.Windows.Forms.Label lblShopingCartlistBoxlabe;
         private System.Windows.Forms.ListBox shoppingCartListBox;
         private System.Windows.Forms.Button btnMakePurchase;
+        private System.Windows.Forms.Label lblVendorList;
+        private System.Windows.Forms.ListBox vendorListBox;
+        private System.Windows.Forms.Label lblStoreProfit;
+        private System.Windows.Forms.Label lblStoreProfitValue;
     }
 }
 
